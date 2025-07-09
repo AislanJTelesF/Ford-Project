@@ -6,6 +6,8 @@
 
 .login-box {
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   flex: 1;
 }
@@ -15,13 +17,14 @@
 }
 
 .img-logo img {
-  margin: 100px;
+  margin: 200px 100px 50px;
   width: 300px;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: #ffffff;
   padding: 30px;
   border-radius: 8px;
@@ -31,8 +34,24 @@ form {
   gap: 50px;
 }
 
+.login-box2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  gap: 10px;
+}
+
 .mb-3 {
+  display: flex;
   margin-bottom: 1rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mat-18 {
+  margin: 0 0.8rem;
+  color: #495057;
 }
 
 .form-label {
@@ -72,8 +91,7 @@ form {
 }
 
 .form-check {
-  display: flex;
-  align-items: center;
+  text-align: right;
   margin-bottom: 1rem;
 }
 
@@ -101,11 +119,17 @@ form {
 
 .form-check-label {
   margin-bottom: 0;
+  font-weight: bold;
   color: #343a40;
+}
+
+.button {
+  text-align: center;
 }
 
 .btn {
   display: inline-block;
+  width: 6.25em;
   font-weight: 400;
   color: #fff;
   text-align: center;
