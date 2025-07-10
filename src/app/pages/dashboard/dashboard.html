@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<app-side-bar></app-side-bar>
+
+<form [formGroup]="selectCarForms">
+  <select formControlName="carId">
+    <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+      {{vehicle.vehicle}}
+    </option>
+  </select>
+</form>
+
+<img *ngIf="selectedVehicle" [src]="selectedVehicle.img">
