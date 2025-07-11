@@ -1,11 +1,68 @@
 <app-side-bar></app-side-bar>
 
-<form [formGroup]="selectCarForms">
-  <select formControlName="carId">
-    <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
-      {{vehicle.vehicle}}
-    </option>
-  </select>
-</form>
+<!-- Main Container -->
+<div class="container-fluid vh-100 d-flex flex-column justify-content-start align-items-center position-relative"
+  style="margin-top: 60px; overflow: hidden;">
 
-<img *ngIf="selectedVehicle" [src]="selectedVehicle.img">
+  <!-- 4 Boxes -->
+  <div class="container-fluid pt-5 mt-4">
+    <div class="row g-4 justify-content-center">
+      <!-- Box 1: Veículo -->
+      <div class="col-md-3">
+        <div class="card p-3 text-center h-100">
+          <h5 class="card-title">Veículo</h5>
+          <form [formGroup]="selectCarForms">
+            <select formControlName="carId" class="form-select mb-2">
+              <option value="" disabled selected>Selecione o veículo</option>
+              <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+                {{ vehicle.vehicle }}
+              </option>
+            </select>
+          </form>
+          <img *ngIf="selectedVehicle?.img" [src]="selectedVehicle.img" class="img-fluid mx-auto d-block"
+            style="max-height: 100px;" />
+        </div>
+      </div>
+
+      <!-- Box 2: Total de Vendas -->
+      <div class="col-md-3">
+        <div class="card p-3 text-center h-100">
+          <h5 class="card-title">Total de Vendas</h5>
+          <p class="card-text display-6 text-primary " *ngIf="selectedVehicle?.volumetotal">
+            {{ selectedVehicle.volumetotal || '-' }}
+          </p>
+          <h6 *ngIf="selectedVehicle?.volumetotal">Unid.</h6>
+        </div>
+      </div>
+
+      <!-- Box 3: Conectados -->
+      <div class="col-md-3">
+        <div class="card p-3 text-center h-100">
+          <h5 class="card-title">Conectados</h5>
+          <p class="card-text display-6 text-primary" *ngIf="selectedVehicle?.connected">
+            {{ selectedVehicle.connected || '-' }}
+          </p>
+          <h6 *ngIf="selectedVehicle?.connected">Unid.</h6>
+        </div>
+      </div>
+
+      <!-- Box 4: Atualizações de Software -->
+      <div class="col-md-3">
+        <div class="card p-3 text-center h-100">
+          <h5 class="card-title">Update Software</h5>
+          <p class="card-text display-6 text-primary" *ngIf="selectedVehicle?.softwareUpdates">
+            {{ selectedVehicle.softwareUpdates || '-' }}
+          </p>
+          <h6 *ngIf="selectedVehicle?.softwareUpdates">Unid.</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center Vehicle Image -->
+  <div class="position-absolute top-50 start-50 translate-middle z-1 opacity-10 mt-3">
+    <img *ngIf="selectedVehicle" [src]="selectedVehicle.img" class="img-fluid" style="max-height: 400px;"
+      alt="Veículo central">
+  </div>
+
+</div>
