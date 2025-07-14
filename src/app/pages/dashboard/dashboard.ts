@@ -7,11 +7,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CarroVin } from '../../utils/carroVinInterface';
 import { Subscription } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [SideBar, ReactiveFormsModule, CommonModule],
+  imports: [SideBar, ReactiveFormsModule, CommonModule, MatIconModule],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css'],
 })
@@ -57,4 +58,16 @@ export class Dashboard implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.reqVin) this.reqVin.unsubscribe();
   }
+
+  onSearchVin(): void {
+  const vin = this.vinForm.controls.vin.value;
+  if (vin) {
+    this.reqVin = this.dashboardservice.buscarVin(vin).subscribe((res: CarroVin) => {
+      this.carroVin = res;
+    });
+  }
 }
+
+
+}
+

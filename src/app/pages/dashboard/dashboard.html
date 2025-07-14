@@ -67,16 +67,24 @@
       alt="Veículo central">
   </div>
 
-  <form [formGroup]="vinForm">
-    <input [formControl]="vinForm.controls.vin" placeholder="Insira o código">
+ <form [formGroup]="vinForm" class="d-flex mb-3">
+  <input
+    type="text"
+    class="form-control me-2 text-center text-primary"
+    [formControl]="vinForm.controls.vin"
+    placeholder="Insira o código VIN" style="width: 300px;"
+  />
+  <span class="input-group-text bg-primary text-white">
+      <mat-icon>search</mat-icon>
+    </span>
 </form>
 
-<div class="container-fluid pt-5 mt-2" *ngIf="carroVin">
+  <div class="container-fluid pt-5 mt-2">
   <div class="table-responsive">
     <table class="table table-bordered text-center">
       <thead class="table-primary">
         <tr>
-          <th>Código - Vin</th>
+          <th>Id</th>
           <th>Odômetro</th>
           <th>Nível de Combustível</th>
           <th>Status</th>
@@ -86,16 +94,17 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{ carroVin.id || '-' }}</td>
-          <td>{{ carroVin.odometro || '-' }}</td>
-          <td>{{ carroVin.nivelCombustivel || '-' }}</td>
-          <td>{{ carroVin.status || '-' }}</td>
-          <td>{{ carroVin.lat || '-' }}</td>
-          <td>{{ carroVin.long || '-' }}</td>
+          <td>{{ carroVin?.id || '-' }}</td>
+          <td>{{ carroVin?.odometro || '-' }}</td>
+          <td>{{ carroVin?.nivelCombustivel || '-' }}</td>
+          <td>{{ carroVin?.status || '-' }}</td>
+          <td>{{ carroVin?.lat || '-' }}</td>
+          <td>{{ carroVin?.long || '-' }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+
 
 </div>
