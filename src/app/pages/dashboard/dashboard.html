@@ -1,13 +1,13 @@
 <app-side-bar></app-side-bar>
 
 <!-- Main Container -->
-<div class="container-fluid vh-100 d-flex flex-column justify-content-start align-items-center position-relative"
-  style="margin-top: 60px; overflow: hidden;">
+<div class="container-fluid vh-100 d-flex flex-column justify-content-start align-items-center"
+  style="margin-top: 60px; overflow: visible;">
 
   <h1 class="text-primary">Dashboard FORD</h1>
 
   <!-- 4 Boxes -->
-  <div class="container-fluid pt-5 mt-4">
+  <div class="container-fluid pt-5 mt-2">
     <div class="row g-4 justify-content-center">
       <!-- Box 1: Veículo -->
       <div class="col-md-3">
@@ -62,9 +62,40 @@
   </div>
 
   <!-- Center Vehicle Image -->
-  <div class="position-absolute top-50 start-50 translate-middle z-1 opacity-10 mt-5">
+  <div class="opacity-10 mt-5">
     <img *ngIf="selectedVehicle" [src]="selectedVehicle.img" class="img-fluid" style="max-height: 400px;"
       alt="Veículo central">
   </div>
+
+  <form [formGroup]="vinForm">
+    <input [formControl]="vinForm.controls.vin" placeholder="Insira o código">
+</form>
+
+<div class="container-fluid pt-5 mt-2" *ngIf="carroVin">
+  <div class="table-responsive">
+    <table class="table table-bordered text-center">
+      <thead class="table-primary">
+        <tr>
+          <th>Código - Vin</th>
+          <th>Odômetro</th>
+          <th>Nível de Combustível</th>
+          <th>Status</th>
+          <th>Lat.</th>
+          <th>Long.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ carroVin.id || '-' }}</td>
+          <td>{{ carroVin.odometro || '-' }}</td>
+          <td>{{ carroVin.nivelCombustivel || '-' }}</td>
+          <td>{{ carroVin.status || '-' }}</td>
+          <td>{{ carroVin.lat || '-' }}</td>
+          <td>{{ carroVin.long || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 </div>
