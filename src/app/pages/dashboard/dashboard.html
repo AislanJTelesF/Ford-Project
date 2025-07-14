@@ -4,6 +4,8 @@
 <div class="container-fluid vh-100 d-flex flex-column justify-content-start align-items-center position-relative"
   style="margin-top: 60px; overflow: hidden;">
 
+  <h1 class="text-primary">Dashboard FORD</h1>
+
   <!-- 4 Boxes -->
   <div class="container-fluid pt-5 mt-4">
     <div class="row g-4 justify-content-center">
@@ -60,7 +62,7 @@
   </div>
 
   <!-- Center Vehicle Image -->
-  <div class="position-absolute top-50 start-50 translate-middle z-1 opacity-10 mt-3">
+  <div class="position-absolute top-50 start-50 translate-middle z-1 opacity-10 mt-5">
     <img *ngIf="selectedVehicle" [src]="selectedVehicle.img" class="img-fluid" style="max-height: 400px;"
       alt="Veículo central">
   </div>
